@@ -194,7 +194,7 @@ function fInsertToDatabaseTitlesActors($dbConn) {
 
   $asin8 = 'B01N4S8DNK';
   $actorID8 = 8;
-  $associatedMovie8 = 'Harry Potter and the Deathly Hallows Pt.2 (Ultra HD/BD)';
+  $associatedMovie8 = 'Harry Potter and the Deathly Hallows Pt.2 (VHS)';
 
   $asin0 = '55555';
   $actorID0 = 0;
@@ -251,6 +251,14 @@ function fInsertToDatabaseTitlesActors($dbConn) {
 
 function fDeleteFromDatabaseTitlesActors($dbConn) {
   $sql = "DELETE FROM dvdTitlesandActors WHERE actorID=0 AND asin='55555'";
+  $stmt = $dbConn->prepare($sql);
+  $stmt->execute();
+}
+
+function fUpdateDatabaseTitlesActors($dbConn) {
+  $sql = "UPDATE dvdTitlesandActors
+  SET associatedMovie = 'Harry Potter and the Deathly Hallows Pt.2 (Ultra HD/BD)'
+  WHERE actorID = 8";
   $stmt = $dbConn->prepare($sql);
   $stmt->execute();
 }
