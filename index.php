@@ -5,13 +5,17 @@ include '../mySQL.php';
 
 $myDBconn = fConnectToDatabase();
 
-fInsertToDatabase($myDBconn);
-fDeleteFromDatabase($myDBconn);
-fListFromDatabase($myDBconn);
+//fInsertToDatabase($myDBconn);
+//fDeleteFromDatabase($myDBconn);
+//fListFromDatabase($myDBconn);
 
-fInsertToDatabaseActors($myDBconn);
-fDeleteFromDatabaseActors($myDBconn);
-fListFromDatabaseActors($myBDconn);
+//fInsertToDatabaseActors($myDBconn);
+//fDeleteFromDatabaseActors($myDBconn);
+//fListFromDatabaseActors($myDBconn);
+
+fInsertToDatabaseTitlesActors($myDBconn);
+fDeleteFromDatabaseTitlesActors($myDBconn);
+fJoinDatabasesTitlesActors($myDBconn);
 //print_r($myDBconn); // prints that $myDB is a PDO Object to the browser page
 
   echo '<html>
