@@ -15,6 +15,7 @@ $myDBconn = fConnectToDatabase();
 
 fInsertToDatabaseTitlesActors($myDBconn);
 fDeleteFromDatabaseTitlesActors($myDBconn);
+fUpdateDatabaseTitlesActors($myDBconn);
 fJoinDatabasesTitlesActors($myDBconn);
 //print_r($myDBconn); // prints that $myDB is a PDO Object to the browser page
 
