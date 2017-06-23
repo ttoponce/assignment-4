@@ -162,4 +162,106 @@ function fListFromDatabaseActors($dbConn) {
   $stmt = $dbConn->prepare($sql);
   $stmt->execute();
 }
+
+function fInsertToDatabaseTitlesActors($dbConn) {
+  $asin1 = 'B001J729ZW';
+  $actorID1 = 1;
+  $associatedMovie1 = 'The Testaments of One Fold and One Shepherd';
+
+  $asin2 = 'B001J729ZW';
+  $actorID2 = 2;
+  $associatedMovie2 = 'The Testaments of One Fold and One Shepherd';
+
+  $asin3 = 'B00TFOKJ8A';
+  $actorID3 = 3;
+  $associatedMovie3 = 'The Hobbit: Motion Picture Trilogy (Blu-ray)';
+
+  $asin4 = 'B00TFOKJ8A';
+  $actorID4 = 4;
+  $associatedMovie4 = 'The Hobbit: Motion Picture Trilogy (Blu-ray)';
+
+  $asin5 = 'B00I6JOBTI';
+  $actorID5 = 5;
+  $associatedMovie5 = 'Lego Movie, The (Blu-ray)';
+
+  $asin6 = 'B00I6JOBTI';
+  $actorID6 = 6;
+  $associatedMovie6 = 'Lego Movie, The (Blu-ray)';
+
+  $asin7 = 'B01N4S8DNK';
+  $actorID7 = 7;
+  $associatedMovie7 = 'Harry Potter and the Deathly Hallows Pt.2 (Ultra HD/BD)';
+
+  $asin8 = 'B01N4S8DNK';
+  $actorID8 = 8;
+  $associatedMovie8 = 'Harry Potter and the Deathly Hallows Pt.2 (Ultra HD/BD)';
+
+  $asin0 = '55555';
+  $actorID0 = 0;
+  $associatedMovie0 = 'No Title';
+
+  $sql = "INSERT INTO dvdTitlesandActors (asin, actorID, associatedMovie) VALUES (:asin, :actorID, :associatedMovie)";
+  $stmt = $dbConn->prepare($sql);
+  $stmt->execute([
+    ':asin' => $asin1,
+    ':actorID' => $actorID1,
+    ':associatedMovie' => $associatedMovie1
+  ]);
+  $stmt->execute([
+    ':asin' => $asin2,
+    ':actorID' => $actorID2,
+    ':associatedMovie' => $associatedMovie2
+  ]);
+  $stmt->execute([
+    ':asin' => $asin3,
+    ':actorID' => $actorID3,
+    ':associatedMovie' => $associatedMovie3
+  ]);
+  $stmt->execute([
+    ':asin' => $asin4,
+    ':actorID' => $actorID4,
+    ':associatedMovie' => $associatedMovie4
+  ]);
+  $stmt->execute([
+    ':asin' => $asin5,
+    ':actorID' => $actorID5,
+    ':associatedMovie' => $associatedMovie5
+  ]);
+  $stmt->execute([
+    ':asin' => $asin6,
+    ':actorID' => $actorID6,
+    ':associatedMovie' => $associatedMovie6
+  ]);
+  $stmt->execute([
+    ':asin' => $asin7,
+    ':actorID' => $actorID7,
+    ':associatedMovie' => $associatedMovie7
+  ]);
+  $stmt->execute([
+    ':asin' => $asin8,
+    ':actorID' => $actorID8,
+    ':associatedMovie' => $associatedMovie8
+  ]);
+  $stmt->execute([
+    ':asin' => $asin0,
+    ':actorID' => $actorID0,
+    ':associatedMovie' => $associatedMovie0
+  ]);
+}
+
+function fDeleteFromDatabaseTitlesActors($dbConn) {
+  $sql = "DELETE FROM dvdTitlesandActors WHERE actorID=0 AND asin='55555'";
+  $stmt = $dbConn->prepare($sql);
+  $stmt->execute();
+}
+
+function fJoinDatabasesTitlesActors($dbConn) {
+  $sql = 'SELECT ta.asin, ta.actorID, t.asin, t.title, t.price, a.actorID, a.fname, a.lname, ta.associatedMovie
+          FROM dvdTitlesandActors ta
+          JOIN dvdTitles t ON t.asin = ta.asin
+          JOIN dvdActors a ON a.actorID = ta.actorID
+          ORDER BY ta.actorID';
+  $stmt = $dbConn->prepare($sql);
+  $stmt->execute();
+}
 ?>
